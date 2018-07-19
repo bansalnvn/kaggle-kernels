@@ -29,7 +29,7 @@ def model(num_classes, input_shape):
 
 if __name__ == "__main__":
     x_train, y_train, n_classes, labels_dictionary, _= read_input_data()
-    x_train, y_train = shuffle(x_train, y_train)
+    x_train, y_train = shuffle(x_train, y_train, random_state=2)
     print(labels_dictionary)
     keras_model = model(n_classes, x_train[0].shape)
     keras_model.compile(loss='categorical_crossentropy',
