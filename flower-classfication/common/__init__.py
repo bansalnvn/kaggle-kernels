@@ -18,14 +18,16 @@ def read_input_data():
     print(len(imgs))
     x_train = []
     y_train = []
+    x_train_rgb = []
     for img in imgs:
         y_train.append(label_dictionary[img.split('/')[-2]])
         img_array = np.asarray(cv2.resize(cv2.imread(img, cv2.IMREAD_GRAYSCALE), (128, 128)))
         img_array = img_array[..., np.newaxis]
         x_train.append(img_array)
+        x_train_rgb.append(np.asarray(cv2.resize(cv2.imread(img), (128, 128))))
     s = pd.Series(y_train)  # one hot encoding.
     one_hot_encoded_y = pd.get_dummies(s)
     # cv2.imshow("test_image", x_train[0])
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
-    return x_train, one_hot_encoded_y, n_classes, label_dictionary
+    return x_train, one_hot_encoded_y, n_classes, label_dictionary, x_train_rgb
