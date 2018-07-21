@@ -34,5 +34,6 @@ if __name__ == '__main__':
                   metrics=['accuracy'])
     print(model.summary())
     train_x, train_y = shuffle(train_x, train_y, random_state=2)
-    history = model.fit(np.asarray(train_x), np.asarray(train_y), epochs=100, batch_size=train_x.shape[0])
-    print(history.history.keys())
+    history = model.fit(np.asarray(train_x), np.asarray(train_y), epochs=100, batch_size=train_x.shape[0],
+                        class_weight={0: 1, 1: 100})
+    print(history.history)
