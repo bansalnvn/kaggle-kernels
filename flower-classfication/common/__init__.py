@@ -30,4 +30,4 @@ def read_input_data():
     # cv2.imshow("test_image", x_train[0])
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
-    return x_train, one_hot_encoded_y, n_classes, label_dictionary, x_train_rgb
+    return x_train, one_hot_encoded_y, n_classes, label_dictionary, np.asarray(x_train_rgb)
