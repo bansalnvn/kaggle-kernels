@@ -33,7 +33,6 @@ if __name__ == '__main__':
                   optimizer='adam',
                   metrics=['accuracy'])
     print(model.summary())
-    train_x, train_y = shuffle(train_x, train_y, random_state=2)
-    history = model.fit(np.asarray(train_x), np.asarray(train_y), epochs=100, batch_size=train_x.shape[0],
+    train_x, train_y = shuffle(train_x, train_y, random_state=10)
+    history = model.fit(np.asarray(train_x), np.asarray(train_y), validation_split=0.2, epochs=100, batch_size=train_x.shape[0],
                         class_weight={0: 1, 1: 100})
-    print(history.history)
